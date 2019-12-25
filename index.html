@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>learn language while coding</title>
+  </head>
+  <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
+  <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Exo:400,700");
+
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    body {
+      font-family: "Exo", sans-serif;
+    }
+
+    .context {
+      width: 50%;
+      top: 15vh;
+      z-index: 1;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      /* bring your own prefixes */
+      transform: translate(-50%, -50%);
+    }
+
+    .context h1 {
+      text-align: center;
+      color: #fff;
+      font-size: 50px;
+    }
+    .MyMusic {
+      text-align: center;
+      width: 100%;
+    }
+
+    .area {
+      background: #35364d;
+      background: -webkit-linear-gradient(to left, #8f94fb, #35364d);
+      width: 100%;
+      height: 100vh;
+    }
+
+    .circles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .circles li {
+      position: absolute;
+      display: block;
+      list-style: none;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      animation: animate 25s linear infinite;
+      bottom: -150px;
+    }
+
+    .circles li:nth-child(1) {
+      left: 25%;
+      width: 80px;
+      height: 80px;
+      animation-delay: 0s;
+    }
+
+    .circles li:nth-child(2) {
+      left: 10%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 2s;
+      animation-duration: 12s;
+    }
+
+    .circles li:nth-child(3) {
+      left: 70%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 4s;
+    }
+
+    .circles li:nth-child(4) {
+      left: 40%;
+      width: 60px;
+      height: 60px;
+      animation-delay: 0s;
+      animation-duration: 18s;
+    }
+
+    .circles li:nth-child(5) {
+      left: 65%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 0s;
+    }
+
+    .circles li:nth-child(6) {
+      left: 75%;
+      width: 110px;
+      height: 110px;
+      animation-delay: 3s;
+    }
+
+    .circles li:nth-child(7) {
+      left: 35%;
+      width: 150px;
+      height: 150px;
+      animation-delay: 7s;
+    }
+
+    .circles li:nth-child(8) {
+      left: 50%;
+      width: 25px;
+      height: 25px;
+      animation-delay: 15s;
+      animation-duration: 45s;
+    }
+
+    .circles li:nth-child(9) {
+      left: 20%;
+      width: 15px;
+      height: 15px;
+      animation-delay: 2s;
+      animation-duration: 35s;
+    }
+
+    .circles li:nth-child(10) {
+      left: 85%;
+      width: 150px;
+      height: 150px;
+      animation-delay: 0s;
+      animation-duration: 11s;
+    }
+
+    @keyframes animate {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+      }
+
+      100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+      }
+    }
+    .myLink {
+      border-radius: 10px;
+      opacity: 0.9;
+    }
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      border-bottom: 1px dotted black;
+      width: 100%;
+    }
+
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 120px;
+      background-color: #555;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      margin-left: -60px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .tooltip .tooltiptext::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #555 transparent transparent transparent;
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+    input[type="range"] {
+      -webkit-appearance: none;
+      margin: 18px 0;
+      width: 100%;
+    }
+    input[type="range"]:focus {
+      outline: none;
+    }
+    input[type="range"]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 8.4px;
+      cursor: pointer;
+      animate: 0.2s;
+      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+      background: #3071a9;
+      border-radius: 1.3px;
+      border: 0.2px solid #010101;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+      border: 1px solid #000000;
+      height: 36px;
+      width: 16px;
+      border-radius: 3px;
+      background: #ffffff;
+      cursor: pointer;
+      -webkit-appearance: none;
+      margin-top: -14px;
+    }
+    input[type="range"]:focus::-webkit-slider-runnable-track {
+      background: #367ebd;
+    }
+    input[type="range"]::-moz-range-track {
+      width: 100%;
+      height: 8.4px;
+      cursor: pointer;
+      animate: 0.2s;
+      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+      background: #3071a9;
+      border-radius: 1.3px;
+      border: 0.2px solid #010101;
+    }
+    input[type="range"]::-moz-range-thumb {
+      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+      border: 1px solid #000000;
+      height: 36px;
+      width: 16px;
+      border-radius: 3px;
+      background: #ffffff;
+      cursor: pointer;
+    }
+    input[type="range"]::-ms-track {
+      width: 100%;
+      height: 8.4px;
+      cursor: pointer;
+      animate: 0.2s;
+      background: transparent;
+      border-color: transparent;
+      border-width: 16px 0;
+      color: transparent;
+    }
+    input[type="range"]::-ms-fill-lower {
+      background: #2a6495;
+      border: 0.2px solid #010101;
+      border-radius: 2.6px;
+      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    }
+    input[type="range"]::-ms-fill-upper {
+      background: #3071a9;
+      border: 0.2px solid #010101;
+      border-radius: 2.6px;
+      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    }
+    input[type="range"]::-ms-thumb {
+      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+      border: 1px solid #000000;
+      height: 36px;
+      width: 16px;
+      border-radius: 3px;
+      background: #ffffff;
+      cursor: pointer;
+    }
+    input[type="range"]:focus::-ms-fill-lower {
+      background: #3071a9;
+    }
+    input[type="range"]:focus::-ms-fill-upper {
+      background: #367ebd;
+    }
+
+    p.copyright {
+      position: absolute;
+      width: 100%;
+      color: #fff;
+      line-height: 40px;
+      font-size: 0.7em;
+      text-align: center;
+      bottom: 0;
+    }
+  </style>
+  <body ng-app="myApp" ng-controller="myCtrl">
+    <div class="context">
+      <h1>learn language While You Coding ..</h1>
+      <br />
+      <div class="MyMusic">
+        <div class="w3-container w3-white w3-padding-16 myLink">
+          <h3>Past Your Text Here ....</h3>
+          <div class="w3-row-padding" style="margin:0 -16px;">
+            <div class="w3-input">
+              <textarea class="w3-input w3-border" id="text" cols="45" rows="3" ng-model="textValue"> </textarea>
+            </div>
+          </div>
+          <h3>Choose the language</h3>
+          <select id="voiceselection" ng-model="selc"></select>
+          <h3>Choose the Speed {{slider}}X</h3>
+          <div class="tooltip">
+            <input
+              id="slider"
+              ng-model="slider"
+              type="range"
+              min="0"
+              max="2"
+              step="0.05"
+              ng-change="changeit()"
+              tooltip="Volume for the Music "
+            />
+            <span class="tooltiptext">Music Volume</span>
+          </div>
+          <audio controls autoplay="true" id="audio-player" style="width: 100%;">
+            <source src="res/music.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+          <p><button ng-click="start()" class="w3-button w3-dark-grey">Start</button></p>
+        </div>
+        <br />
+        <br />
+        <br />
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <input type="hidden" name="cmd" value="_donations" />
+          <input type="hidden" name="business" value="enghamzasalem@yahoo.com" />
+          <input type="hidden" name="currency_code" value="USD" />
+          <img src="res/me.png" width="100px" /><br />
+          <input
+            type="image"
+            src="https://retohercules.com/images/buy-me-a-coffee-10.png"
+            width="200px"
+            border="0"
+            name="submit"
+            title="PayPal - The safer, easier way to pay online!"
+            alt="Donate with PayPal button"
+          />
+          <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+        </form>
+      </div>
+
+      <br />
+      <br />
+      <br />
+      <footer class="footer">
+        <div class="footerContainer">
+          <p class="copyright">
+            © No CopyWrite you can take the code <a href="https://enghamzasalem.com">from here</a>
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <div class="area">
+      <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    //Populate voice selection dropdown
+    var voicelist = responsiveVoice.getVoices();
+    var vselect = $("#voiceselection");
+    $.each(voicelist, function() {
+      vselect.append(
+        $("<option />")
+          .val(this.name)
+          .text(this.name)
+      );
+    });
+  </script>
+  <script>
+    var app = angular.module("myApp", []);
+    app.controller("myCtrl", function($scope) {
+      $scope.textValue = " Доброе утро	Good morning";
+      var vid = document.getElementById("audio-player");
+      vid.volume = 0.2;
+      $scope.speed = 0.5;
+      $scope.changeit = function() {
+        $scope.speed = $scope.slider;
+      };
+      $scope.start = function() {
+        if ($scope.selc) {
+          responsiveVoice.speak($scope.textValue, $scope.selc, {rate: $scope.speed});
+          vid.play();
+        } else {
+          Swal.fire({
+            title: "Error!",
+            text: "Choose language Please",
+            icon: "error",
+            confirmButtonText: "Ok"
+          });
+        }
+      };
+    });
+  </script>
+</html>

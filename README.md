@@ -3,4 +3,4 @@ This Website is simple web app to help you to listen to words that you want to r
 
 # How to use ..
 
-![How to Use](https://raw.githubusercontent.com/enghamzasalem/learn-language-while-coding/master/res/demo.gif?token=ADQ5NMEPHMPYL2VZRBACE7S6ARYAU)
+![How to Use](https://raw.githubusercontent.com/enghamzasalem/learn-language-while-coding/master/res/demo.gif)

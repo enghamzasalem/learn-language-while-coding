@@ -1,4 +1,5 @@
 # learn-language-while-coding
+This Website is simple web app to help you to listen to words that you want to remember...Enjoy
 
 # How to use ..
 
